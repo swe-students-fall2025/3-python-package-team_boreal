@@ -1,0 +1,19 @@
+[project]
+name = "fortuneluckpredictor"
+version = "0.0.1"
+authors = [
+  { name="Example Author", email="author@example.com" },
+]
+description = "Fortune & luck predictor. Returns lucky numbers, fortunes, and horoscope-like results."
+readme = "README.md"
+requires-python = ">=3.9"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+]
+license = "MIT"
+license-files = ["LICEN[CS]E*"]
+
+[project.urls]
+Homepage = "https://github.com/swe-students-fall2025/3-python-package-team_boreal"
+Issues = "https://github.com/swe-students-fall2025/3-python-package-team_boreal/issues"
