@@ -30,4 +30,4 @@ def futurePrediction(name1: str) -> str:
     
     return f"{name1} will be a {career} and get married at {marriage_age} {kids_phrase} and you will be {success}"
 
-testing = "testingSring"
+testing = "testing"
