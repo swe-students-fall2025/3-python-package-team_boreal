@@ -29,4 +29,3 @@ def futurePrediction(name1: str) -> str:
     kids_phrase = f"with {kids_count} {kids_str}" if kids_count > 0 else "with no kids"
     
     return f"{name1} will be a {career} and get married at {marriage_age} {kids_phrase} and you will be {success}"
-
