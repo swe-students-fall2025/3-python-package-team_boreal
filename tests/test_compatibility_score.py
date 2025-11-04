@@ -1,5 +1,5 @@
 import pytest
-from fortuneluckpredictor import compatibility_score
+from src.fortuneluckpredictor import compatibility_score
 
 # Sample names for testing
 @pytest.fixture
