@@ -25,17 +25,6 @@ DAY_ALIASES = {
 }
 
 def predict_day(day: str | None = None) -> str:
-    """
-    Predicts a fortune and daily message for a given day.
-    If no day is provided, uses the current weekday.
-
-    Args:
-        day (str | None): The name or abbreviation of a day (e.g., "Mon", "Monday").
-                          If None, uses today's weekday.
-
-    Returns:
-        str: A formatted string with the day's message and a fortune.
-    """
     # If no day provided, use today's day name
     if not day:
         day = datetime.now().strftime("%A")
@@ -55,4 +44,4 @@ def predict_day(day: str | None = None) -> str:
     fortune_text = rng.choice(fortunes)
 
     # Format nicely
-    return f"{day.capitalize()}: {message} Fortune: {fortune_text}"
+    return f"{key.capitalize()}: {message} Fortune: {fortune_text}"
