@@ -1,12 +1,6 @@
 import random
 
-
-def get_lucky_number(number_range: tuple[int, int] = (1, 100)) -> int:
-    pass
-
-
-def fortune(cookie: bool = True) -> str:
-    fortunes = [
+fortunes = [
         "Your resume will land on the perfect Meta recruiter's desk this week.",
         "A Meta engineer will soon endorse your skills and open a new door.",
         "The next coding interview you take will feel like designing the future of social connections.",
@@ -28,16 +22,9 @@ def fortune(cookie: bool = True) -> str:
         "Soon you will realize you are exactly where you need to be.",
         "An opportunity to help someone will come, and your kindness will be remembered.",
     ]
-    return random.choice(fortunes)
 
-
-def predict_day(day: str) -> str:
-    pass
-
-
-def compatibility_score(name1: str, name2: str) -> str:
-    pass
-
-
-def futurePrediction(name1: str) -> str:
-    pass
+def get_fortune(cookie: bool = True) -> str:
+    if cookie:
+        return f"🍪 {random.choice(fortunes)}"
+    else:
+        return random.choice(fortunes)

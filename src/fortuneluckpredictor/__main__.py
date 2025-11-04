@@ -1,8 +1,8 @@
-from fortune import fortune
-from futurePredictions import futurePrediction
-from compatibility_score import compatibility_score
-from luckyNumber import get_lucky_number
-from predictDay import predict_day
+from .fortune import get_fortune
+from .futurePredictions import futurePrediction
+from .compatibility_score import compatibility_score
+from .luckyNumber import get_lucky_number
+from .predictDay import predict_day
 
 def main() -> None:
     while True:
@@ -20,14 +20,14 @@ def main() -> None:
 
         if choice == "1":
             print("\nYour fortune:")
-            print(fortune())
+            print(get_fortune())
         elif choice == "2":
             name = input("Enter your name: ").strip()
             print(futurePrediction(name))
         elif choice == "3":
             day = input("Enter a day of the week: ").strip()
             try:
-                print(predict_day(day))
+                print(predict_day(day or None))
             except Exception as e:
                 print(f"Error: {e}")
         elif choice == "4":

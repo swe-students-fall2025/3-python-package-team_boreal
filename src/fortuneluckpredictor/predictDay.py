@@ -1,4 +1,6 @@
-from .fortune import fortune
+from .fortune import fortunes
+import random
+from datetime import datetime
 
 # Each day has its own "theme" or message style
 DAY_MESSAGES = {
@@ -22,34 +24,35 @@ DAY_ALIASES = {
     "sun": "sunday",
 }
 
-def predict_day(day: str) -> str:
+def predict_day(day: str | None = None) -> str:
     """
-    Predict your day's vibe and include a random fortune.
+    Predicts a fortune and daily message for a given day.
+    If no day is provided, uses the current weekday.
 
     Args:
-        day (str): Name of the day, case-insensitive (e.g. "Monday", "mon")
+        day (str | None): The name or abbreviation of a day (e.g., "Mon", "Monday").
+                          If None, uses today's weekday.
 
     Returns:
-        str: A string combining the day's message and a random fortune.
-
-    Example:
-        >>> predict_day("Monday")
-        'Monday: Fresh energy fills your week — set your intentions high. Fortune: Your resume will land on the perfect Meta recruiter’s desk this week.'
+        str: A formatted string with the day's message and a fortune.
     """
-    if not day or not day.strip():
-        raise ValueError("Day must be a non-empty string.")
+    # If no day provided, use today's day name
+    if not day:
+        day = datetime.now().strftime("%A")
 
-    day_lower = day.strip().lower()
-
-    # Resolve abbreviations
-    if day_lower in DAY_MESSAGES:
-        key = day_lower
-    elif day_lower in DAY_ALIASES:
-        key = DAY_ALIASES[day_lower]
-    else:
-        raise ValueError(f"Unrecognized day name: {day}")
+    d = day.strip().lower()
+    # Normalize to full day name
+    key = d if d in DAY_MESSAGES else DAY_ALIASES.get(d)
+    if not key:
+        raise ValueError(f"Unrecognized day name: '{day}'")
 
     message = DAY_MESSAGES[key]
-    fortune_text = fortune()
 
+    # Create a deterministic fortune based on today's date and day name
+    today = datetime.now().strftime("%Y-%m-%d")
+    seed_value = hash(today + key) % (2**32)
+    rng = random.Random(seed_value)
+    fortune_text = rng.choice(fortunes)
+
+    # Format nicely
     return f"{day.capitalize()}: {message} Fortune: {fortune_text}"
