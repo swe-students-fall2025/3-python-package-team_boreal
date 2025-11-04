@@ -8,8 +8,8 @@ try:
 except Exception:
     _tz = None
 
-def get_lucky_number(range=(1, 100)):
-    a, b = range
+def get_lucky_number(r=(1, 100)):
+    a, b = r
     if a > b:
         a, b = b, a
     nums = list(range(a, b + 1))
