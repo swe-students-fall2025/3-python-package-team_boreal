@@ -1,6 +1,6 @@
 import pytest
 import math
-from fortuneluckpredictor import get_lucky_number
+from src.fortuneluckpredictor import luckyNumber
 
 @pytest.fixture
 def sample_ranges():
@@ -18,7 +18,7 @@ def test_sanity_check():
 def test_output_type_and_bounds(sample_ranges):
     """Check that output is an integer within the expected bounds."""
     for r in sample_ranges:
-        result = get_lucky_number.get_lucky_number(r)
+        result = luckyNumber.get_lucky_number(r)
         assert isinstance(result, int)
         a, b = r
         lo, hi = (a, b) if a <= b else (b, a)
@@ -32,9 +32,9 @@ def test_consistent_same_seed(monkeypatch):
         @classmethod
         def now(cls, tz=None):
             return datetime(2025, 11, 3, 14, 45)
-    monkeypatch.setattr(get_lucky_number, "datetime", FixedTime)
-    first = get_lucky_number.get_lucky_number((1, 100))
-    second = get_lucky_number.get_lucky_number((1, 100))
+    monkeypatch.setattr(luckyNumber, "datetime", FixedTime)
+    first = luckyNumber.get_lucky_number((1, 100))
+    second = luckyNumber.get_lucky_number((1, 100))
     assert first == second
 
 # Returns different numbers at different times
@@ -51,16 +51,16 @@ def test_distribution_varies_over_time(monkeypatch):
             else:
                 cls._toggle = True
                 return datetime(2025, 11, 2, 14, 45)
-    monkeypatch.setattr(get_lucky_number, "datetime", TimeVariant)
-    n1 = get_lucky_number.get_lucky_number((1, 100))
-    n2 = get_lucky_number.get_lucky_number((1, 100))
+    monkeypatch.setattr(luckyNumber, "datetime", TimeVariant)
+    n1 = luckyNumber.get_lucky_number((1, 100))
+    n2 = luckyNumber.get_lucky_number((1, 100))
     assert n1 != n2, f"Expected different results across distinct datetimes ({n1} == {n2})"
 
 def test_single_value_range():
     """If range has only one number, that number must be returned."""
-    assert get_lucky_number.get_lucky_number((42, 42)) == 42
+    assert luckyNumber.get_lucky_number((42, 42)) == 42
 
 def test_reversed_range_handled():
     """Swapped a,b should still produce valid result."""
-    val = get_lucky_number.get_lucky_number((100, 1))
+    val = luckyNumber.get_lucky_number((100, 1))
     assert 1 <= val <= 100
