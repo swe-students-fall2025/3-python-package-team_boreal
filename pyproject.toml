@@ -1,19 +1,37 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
 [project]
 name = "fortuneluckpredictor"
-version = "0.0.1"
+version = "0.1.10"
 authors = [
-  { name="Example Author", email="author@example.com" },
+  { name="Pranathi Chinthalapani", email="prc9852@nyu.edu" },
 ]
 description = "Fortune & luck predictor. Returns lucky numbers, fortunes, and horoscope-like results."
 readme = "README.md"
+keywords = ["python", "package", "build", "cookie", "fun", "guess", "luck", "fortune"]
+
 requires-python = ">=3.9"
 classifiers = [
     "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
     "Operating System :: OS Independent",
 ]
-license = "MIT"
+
+license = {text = "GPL-3.0"}
 license-files = ["LICEN[CS]E*"]
+
+[project.optional-dependencies]
+dev = ["pytest"]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
 
 [project.urls]
 Homepage = "https://github.com/swe-students-fall2025/3-python-package-team_boreal"
+Repository = "https://github.com/swe-students-fall2025/3-python-package-team_boreal.git"
 Issues = "https://github.com/swe-students-fall2025/3-python-package-team_boreal/issues"
