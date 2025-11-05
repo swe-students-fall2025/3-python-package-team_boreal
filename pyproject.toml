@@ -39,3 +39,18 @@ where = ["src"]
 Homepage = "https://github.com/swe-students-fall2025/3-python-package-team_boreal"
 Repository = "https://github.com/swe-students-fall2025/3-python-package-team_boreal.git"
 Issues = "https://github.com/swe-students-fall2025/3-python-package-team_boreal/issues"
+
+[tool.bumpver]
+current_version = "1.0.1"
+pattern = "MAJOR.MINOR.PATCH"
+commit = true
+tag = true
+push = true
+
+[tool.bumpver.file_patterns]
+"pyproject.toml" = [
+    'version = "{version}"'
+]
+"src/fortuneluckpredictor/__init__.py" = [
+    '__version__ = "{version}"'
+]
