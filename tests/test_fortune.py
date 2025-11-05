@@ -1,5 +1,5 @@
 import pytest
-from src.fortuneluckpredictor import fortune
+from fortuneluckpredictor import fortune
 
 def test_sanity_check():
     assert True

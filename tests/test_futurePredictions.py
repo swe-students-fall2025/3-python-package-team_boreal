@@ -1,5 +1,5 @@
 import pytest
-from src.fortuneluckpredictor import futurePredictions
+from fortuneluckpredictor import futurePredictions
 
 @pytest.fixture
 def sample_names():
