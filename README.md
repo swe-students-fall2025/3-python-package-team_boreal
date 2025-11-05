@@ -1,4 +1,4 @@
-![CI](https://github.com/swe-students-fall2025/3-python-package-team_boreal/actions/workflows/ci.yml/badge.svg)
+![CI/CD](https://github.com/swe-students-fall2025/3-python-package-team_boreal/actions/workflows/ci.yml/badge.svg)
 # Fortune Luck Predictor
 
 A Python package that returns lucky numbers, fortunes, and horoscope-like results.
