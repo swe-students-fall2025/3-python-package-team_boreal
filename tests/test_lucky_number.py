@@ -1,6 +1,6 @@
 import pytest
 import math
-from src.fortuneluckpredictor import luckyNumber
+from fortuneluckpredictor import luckyNumber
 
 @pytest.fixture
 def sample_ranges():

@@ -1,5 +1,5 @@
 import pytest
-from src.fortuneluckpredictor import predictDay
+from fortuneluckpredictor import predictDay
 
 
 # --- Helpers ---
