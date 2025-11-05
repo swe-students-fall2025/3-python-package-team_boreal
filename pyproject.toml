@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "fortuneluckpredictor"
-version = "0.1.10"
+version = "1.0.0"
 authors = [
   { name = "Pranathi Chinthalapani", email = "prc9852@nyu.edu" },
   { name = "Sam Rawdon", email = "sr6360@nyu.edu" },
