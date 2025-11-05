@@ -42,7 +42,7 @@ Issues = "https://github.com/swe-students-fall2025/3-python-package-team_boreal/
 
 [tool.bumpver]
 current_version = "1.0.1"
-pattern = "MAJOR.MINOR.PATCH"
+version_pattern = "MAJOR.MINOR.PATCH"
 commit = true
 tag = true
 push = true
