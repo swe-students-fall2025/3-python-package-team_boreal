@@ -4,8 +4,9 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "fortuneluckpredictor"
-version = "0.1.10"
+version = "1.0.1"
 authors = [
+  { name = "Pranathi Chinthalapani, Sam Rawdon, May Zhou, Hanjun Deng, William Chan", email = "prc9852@nyu.edu" },
   { name = "Pranathi Chinthalapani", email = "prc9852@nyu.edu" },
   { name = "Sam Rawdon", email = "sr6360@nyu.edu" },
   { name = "May Zhou", email = "zz4206@nyu.edu" },
