@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "fortuneluckpredictor"
-version = "1.0.1"
+version = "1.0.2"
 authors = [
   { name = "Pranathi Chinthalapani, Sam Rawdon, May Zhou, Hanjun Deng, William Chan", email = "prc9852@nyu.edu" },
   { name = "Pranathi Chinthalapani", email = "prc9852@nyu.edu" },
@@ -41,7 +41,7 @@ Repository = "https://github.com/swe-students-fall2025/3-python-package-team_bor
 Issues = "https://github.com/swe-students-fall2025/3-python-package-team_boreal/issues"
 
 [tool.bumpver]
-current_version = "1.0.1"
+current_version = "1.0.2"
 version_pattern = "MAJOR.MINOR.PATCH"
 commit = true
 tag = true
