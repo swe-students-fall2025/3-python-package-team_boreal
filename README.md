@@ -1,8 +1,15 @@
+![CI](https://github.com/swe-students-fall2025/3-python-package-team_boreal/actions/workflows/ci.yml/badge.svg)
 # Fortune Luck Predictor
 
 A Python package that returns lucky numbers, fortunes, and horoscope-like results.
+## Team
+
+- Pranathi Chinthalapani ([GitHub](#))
+- Sam Rawdon ([GitHub](#))
+- William Chan ([GitHub](https://github.com/wc2184))
 
 ## What is it?
+
 
 Fortune Luck Predictor provides:
 - Fortunes: Random fortune cookie-style messages
@@ -85,3 +92,9 @@ pytest tests/
 ## Links
 
 - GitHub: https://github.com/swe-students-fall2025/3-python-package-team_boreal
+
+## Team
+
+- Pranathi Chinthalapani — prc9852@nyu.edu (GitHub: _add link_)
+- Sam Rawdon — sr6360@nyu.edu (GitHub: _add link_)
+- William Chan — wc2184@nyu.edu (GitHub: https://github.com/wc2184)

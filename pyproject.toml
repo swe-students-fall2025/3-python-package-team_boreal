@@ -8,6 +8,7 @@ version = "0.1.10"
 authors = [
   { name="Pranathi Chinthalapani", email="prc9852@nyu.edu" },
   { name="Sam Rawdon", email="sr6360@nyu.edu" },
+  { name="William Chan", email="wc2184@nyu.edu" }
 ]
 description = "Fortune & luck predictor. Returns lucky numbers, fortunes, and horoscope-like results."
 readme = "README.md"
@@ -16,11 +17,10 @@ keywords = ["python", "package", "build", "cookie", "fun", "guess", "luck", "for
 requires-python = ">=3.9"
 classifiers = [
     "Programming Language :: Python :: 3",
-    "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
     "Operating System :: OS Independent",
 ]
 
-license = {text = "GPL-3.0"}
+license = "GPL-3.0"
 license-files = ["LICEN[CS]E*"]
 
 [project.optional-dependencies]
