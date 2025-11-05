@@ -1,5 +1,5 @@
 import pytest
-from fortuneluckpredictor.predictDay import predict_day
+from src.fortuneluckpredictor import predictDay
 
 
 # --- Helpers ---
@@ -13,12 +13,12 @@ def freeze_day(monkeypatch, year=2025, month=11, day=4):
         def now(cls):
             return cls(year, month, day)
 
-    monkeypatch.setattr("fortuneluckpredictor.predictDay.datetime", FixedDate, raising=True)
+    monkeypatch.setattr(predictDay,"datetime", FixedDate, raising=True)
 
 
 def pin_fortunes(monkeypatch, items):
     #Replace fortunes list inside predictDay.
-    monkeypatch.setattr("fortuneluckpredictor.predictDay.fortunes", items, raising=True)
+    monkeypatch.setattr(predictDay,"fortunes", items, raising=True)
 
 
 # --- Tests ---
@@ -27,7 +27,7 @@ def test_alias_normalization_is_case_and_space_insensitive(monkeypatch):
     freeze_day(monkeypatch)
     pin_fortunes(monkeypatch, ["ONLY_ONE"])
     for inp in ["fri", "Fri", "  FRI  "]:
-        out = predict_day(inp)
+        out = predictDay.predict_day(inp)
         assert out.startswith("Friday:")
         assert "Fortune: ONLY_ONE" in out
 
@@ -35,7 +35,7 @@ def test_alias_normalization_is_case_and_space_insensitive(monkeypatch):
 def test_full_day_name(monkeypatch):
     freeze_day(monkeypatch)
     pin_fortunes(monkeypatch, ["X"])
-    out = predict_day("Monday")
+    out = predictDay.predict_day("Monday")
     assert out.startswith("Monday:")
     assert "Fresh energy fills your week" in out
     assert out.endswith("Fortune: X")
@@ -44,7 +44,7 @@ def test_full_day_name(monkeypatch):
 def test_blank_input_means_today(monkeypatch):
     freeze_day(monkeypatch, 2025, 11, 5)  # Wednesday
     pin_fortunes(monkeypatch, ["ONLY_ONE"])
-    out = predict_day("")  # blank → today
+    out = predictDay.predict_day("")  # blank → today
     assert out.startswith("Wednesday:")
     assert "Fortune: ONLY_ONE" in out
 
@@ -52,7 +52,7 @@ def test_blank_input_means_today(monkeypatch):
 def test_whitespace_input(monkeypatch):
     freeze_day(monkeypatch, 2025, 11, 6)  # Thursday
     pin_fortunes(monkeypatch, ["Y"])
-    out = predict_day("   ")
+    out = predictDay.predict_day("   ")
     assert out.startswith("Thursday:")
     assert out.endswith("Fortune: Y")
 
@@ -60,22 +60,22 @@ def test_whitespace_input(monkeypatch):
 def test_invalid_day_raises(monkeypatch):
     freeze_day(monkeypatch)
     with pytest.raises(ValueError):
-        predict_day("Funday")
+        predictDay.predict_day("Funday")
 
 
 def test_same_input_same_output_within_run(monkeypatch):
     freeze_day(monkeypatch)
     pin_fortunes(monkeypatch, ["A", "B", "C", "D", "E", "F", "G", "H"])
-    a = predict_day("Tuesday")
-    b = predict_day("Tuesday")
+    a = predictDay.predict_day("Tuesday")
+    b = predictDay.predict_day("Tuesday")
     assert a == b, "Same (date, day) should yield same fortune"
 
 def test_different_day_different_output(monkeypatch):
     freeze_day(monkeypatch)
     pin_fortunes(monkeypatch, ["A", "B", "C", "D", "E", "F", "G", "H"])
 
-    monday_output = predict_day("Monday")
-    tuesday_output = predict_day("Tuesday")
+    monday_output = predictDay.predict_day("Monday")
+    tuesday_output = predictDay.predict_day("Tuesday")
 
     # Since RNG seed depends on day name, outputs should differ
     assert monday_output != tuesday_output, "Different days should yield different fortunes"
@@ -89,6 +89,6 @@ def test_different_day_different_output(monkeypatch):
 def test_alias_table(alias, full, monkeypatch):
     freeze_day(monkeypatch)
     pin_fortunes(monkeypatch, ["ONLY_ONE"])
-    out = predict_day(alias)
+    out = predictDay.predict_day(alias)
     assert out.startswith(f"{full}:")
     assert "Fortune: ONLY_ONE" in out
