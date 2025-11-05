@@ -44,3 +44,66 @@ def test_consistent_output(sample_names):
         a = compatibility_score.compatibility_score(n1, n2)
         b = compatibility_score.compatibility_score(n1, n2)
         assert a == b
+
+# Test that names with same letters but different cases produce the same score
+def test_case_insensitive():
+    pairs = [
+        ("JOHN", "mary"),
+        ("John", "MARY"),
+        ("jOhN", "MaRy"),
+    ]
+    first = compatibility_score.compatibility_score(pairs[0][0], pairs[0][1])
+    for n1, n2 in pairs[1:]:
+        result = compatibility_score.compatibility_score(n1, n2)
+        assert result == first, f"Case sensitivity affected score: {pairs[0]} vs ({n1},{n2})"
+
+# Test that names with spaces produce same score as trimmed names
+def test_whitespace_handling():
+    pairs = [
+        (" Alice ", " Bob "),
+        ("Alice", "Bob"),
+        ("  Alice", "Bob  "),
+        ("\tAlice\t", "\nBob\n"),
+    ]
+    first = compatibility_score.compatibility_score(pairs[0][0], pairs[0][1])
+    for n1, n2 in pairs[1:]:
+        result = compatibility_score.compatibility_score(n1, n2)
+        assert result == first, f"Whitespace affected score: {pairs[0]} vs ({n1},{n2})"
+
+# Test that order of names does not affect the score
+def test_order():
+    name_pairs = [
+        ("Alice", "Bob"),
+        ("Emma", "Oliver"),
+        ("Luna", "Sol"),
+    ]
+    for n1, n2 in name_pairs:
+        forward = compatibility_score.compatibility_score(n1, n2)
+        reverse = compatibility_score.compatibility_score(n2, n1)
+        assert forward == reverse, f"Score differs when names swapped: {n1},{n2}"
+
+# Test that names with special characters are handled correctly
+def test_special_characters():
+    special_names = [
+        ("John123", "Mary456"),
+        ("Anna-Maria", "Jean-Paul"),
+        ("O'Connor", "McDonald"),
+        ("  Space  ", "  Tab\t"),
+    ]
+    for n1, n2 in special_names:
+        result = compatibility_score.compatibility_score(n1, n2)
+        assert isinstance(result, str), f"Failed to handle special characters in {n1},{n2}"
+        assert "Compatibility score:" in result
+
+# Test that compatibility score is always between 0 and 9
+def test_score_bounds():
+    test_pairs = [
+        ("aaaaaa", "eeeeee"),
+        ("xyz123", "wvt456"),
+        ("aeiou", "uoiea"),
+        ("A"*100, "E"*100),
+    ]
+    for n1, n2 in test_pairs:
+        result = compatibility_score.compatibility_score(n1, n2)
+        score = int(result.split(".")[0].split(": ")[1])
+        assert 0 <= score <= 9, f"Score {score} out of bounds for {n1},{n2}"
