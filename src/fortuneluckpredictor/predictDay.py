@@ -26,10 +26,10 @@ DAY_ALIASES = {
 
 def predict_day(day: str | None = None) -> str:
     # If no day provided, use today's day name
-    if not day:
+    if not day or not day.strip():
         day = datetime.now().strftime("%A")
-
     d = day.strip().lower()
+
     # Normalize to full day name
     key = d if d in DAY_MESSAGES else DAY_ALIASES.get(d)
     if not key:
