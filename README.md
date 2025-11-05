@@ -4,9 +4,11 @@
 A Python package that returns lucky numbers, fortunes, and horoscope-like results.
 ## Team
 
-- Pranathi Chinthalapani ([GitHub](#))
-- Sam Rawdon ([GitHub](#))
-- William Chan ([GitHub](https://github.com/wc2184))
+- Pranathi Chinthalapani — prc9852@nyu.edu ([GitHub](https://github.com/PranathiChin))
+- Sam Rawdon — sr6360@nyu.edu ([GitHub](https://github.com/SamRawdon))
+- May Zhou — zz4206@nyu.edu ([GitHub](https://github.com/zz4206))
+- Hanjun Deng — hd2432@nyu.edu ([GitHub](https://github.com/Deng-Hanjun))
+- William Chan — wc2184@nyu.edu ([GitHub](https://github.com/wc2184))
 
 ## What is it?
 
@@ -92,9 +94,4 @@ pytest tests/
 ## Links
 
 - GitHub: https://github.com/swe-students-fall2025/3-python-package-team_boreal
-
-## Team
-
-- Pranathi Chinthalapani — prc9852@nyu.edu (GitHub: _add link_)
-- Sam Rawdon — sr6360@nyu.edu (GitHub: _add link_)
-- William Chan — wc2184@nyu.edu (GitHub: https://github.com/wc2184)
+- PyPI: https://pypi.org/project/fortuneluckpredictor/
